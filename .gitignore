@@ -1,0 +1,61 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.kotlin
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Lokalne Sentry (self-hosted) ###
+docker/sentry/self-hosted/
+docker/sentry/training.env
+
+### Worktree agentów Claude Code ###
+.claude/worktrees/
+
+### Pamięć podręczna Angular CLI ###
+.angular/
+### Frontend i laboratoria (Node.js) ###
+node_modules/
+frontend/**/dist/
+labs/**/dist/
+# Konfiguracja środowiska generowana przez scripts/runtime-config.mjs (zawiera DSN)
+frontend/checkout-web/public/runtime-config.js
+labs/**/public/runtime-config.js
+# Tokeny Sentry (sentry.sh token / ci-token) i lokalne pliki sentry-cli
+*.token
+.env
+.env.*
+.sentryclirc

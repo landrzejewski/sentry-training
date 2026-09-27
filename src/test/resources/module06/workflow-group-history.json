@@ -1,0 +1,27 @@
+[
+  {
+    "group": {
+      "id": "46",
+      "shortId": "SENTRY-TRAINING-1E",
+      "title": "BankGateway$BankTimeoutException: Bank bank-alfa nie odpowiedział w 30 s: autoryzacja płatności pay_4RegYzAbCdEfGhIj sprzedawcy kwiaciarnia-roza",
+      "culprit": "pl.training.sentry.module06.BankGateway in failIfUnavailable",
+      "permalink": "http://localhost:9000/organizations/sentry/issues/46/",
+      "level": "error",
+      "status": "unresolved",
+      "substatus": "regressed",
+      "priority": "high",
+      "issueCategory": "error",
+      "count": "35",
+      "firstSeen": "2026-09-27T08:55:12.488000Z",
+      "lastSeen": "2026-09-27T10:26:09.006000Z"
+    },
+    "count": 1,
+    "lastTriggered": "2026-09-27T10:25:56.253124Z",
+    "eventId": "ef39d1f5fa1a41f48eb30ef8263db199",
+    "detector": {
+      "id": "3",
+      "name": "Error Monitor",
+      "type": "error"
+    }
+  }
+]

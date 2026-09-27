@@ -1,0 +1,89 @@
+{
+  "id": "223",
+  "shortId": "SENTRY-TRAINING-6Z",
+  "title": "CheckoutException: Nie udało się złożyć zamówienia ORD-6001",
+  "status": "unresolved",
+  "substatus": "ongoing",
+  "count": "1",
+  "userCount": 1,
+  "firstSeen": "2026-09-27T10:30:45.409000Z",
+  "lastSeen": "2026-09-27T10:30:45Z",
+  "project": {
+    "id": "2",
+    "slug": "sentry-training"
+  },
+  "assignedTo": {
+    "type": "user",
+    "id": "4",
+    "name": "anna.checkout@sentry-training.local",
+    "email": "anna.checkout@sentry-training.local"
+  },
+  "activity": [
+    {
+      "id": "57",
+      "type": "auto_set_ongoing",
+      "dateCreated": "2026-09-27T10:31:16.917532Z",
+      "user": null,
+      "data": {
+        "manually": true
+      }
+    },
+    {
+      "id": "56",
+      "type": "mark_reviewed",
+      "dateCreated": "2026-09-27T10:31:16.903523Z",
+      "user": {
+        "email": "admin@sentry-training.local"
+      },
+      "data": {}
+    },
+    {
+      "id": "55",
+      "type": "note",
+      "dateCreated": "2026-09-27T10:31:16.867322Z",
+      "user": {
+        "email": "admin@sentry-training.local"
+      },
+      "data": {
+        "text": "Zakres: project=sentry-training, environment=training, okres 24h\nFakty: 1 events, 1 users, first seen 2026-09-27T10:30:45.409000Z\nFakty: przyczyna z tagu payment.failure_reason=timeout, bramka odpowiada po 2 s\nHipoteza: timeout klienta checkout (250 ms) krótszy niż czas odpowiedzi bramki\nNastępny krok: checkout porównuje timeout z SLA bramki; właściciel: anna.checkout@sentry-training.local\nKryterium weryfikacji: brak nowych eventów timeout w kolejnym release przy potwierdzonym ruchu"
+      }
+    },
+    {
+      "id": "54",
+      "type": "assigned",
+      "dateCreated": "2026-09-27T10:31:16.816752Z",
+      "user": {
+        "email": "admin@sentry-training.local"
+      },
+      "data": {
+        "assignee": "4",
+        "assigneeEmail": "anna.checkout@sentry-training.local",
+        "assigneeName": "",
+        "assigneeType": "user"
+      }
+    },
+    {
+      "id": "52",
+      "type": "assigned",
+      "dateCreated": "2026-09-27T10:30:53.300422Z",
+      "user": null,
+      "data": {
+        "assignee": "3",
+        "assigneeEmail": null,
+        "assigneeName": "payments",
+        "assigneeType": "team",
+        "integration": "projectOwnership",
+        "rule": "tags.payment.failure_reason:* #payments #checkout"
+      }
+    },
+    {
+      "id": "0",
+      "type": "first_seen",
+      "dateCreated": "2026-09-27T10:30:45.409000Z",
+      "user": null,
+      "data": {
+        "priority": "high"
+      }
+    }
+  ]
+}

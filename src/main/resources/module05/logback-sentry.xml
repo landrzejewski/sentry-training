@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Konfiguracja Logback z SentryAppender dla części modułu 5 bez Springa (scenariusze 8-10).
+
+  W aplikacji ten plik nazywa się logback.xml i leży w katalogu głównym classpath, a Logback
+  wczytuje go sam przy pierwszym LoggerFactory.getLogger. W repozytorium szkolenia wszystkie
+  moduły dzielą jeden classpath, a Spring Boot też czyta logback.xml, więc plik ma inną nazwę
+  i wczytuje go jawnie LogbackSentryConfig.fromXml.
+-->
+<configuration>
+
+    <!-- Pełny strumień logów aplikacji. Wzorzec skrócony dla wydruku demo: bez daty i bez stack
+         trace (%nopex), z correlation ID z MDC. W aplikacji stack trace w konsoli zostaje. -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>log&gt;  %-5level %logger{0} [%X{correlation_id:-}] %msg%n%nopex</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Bez DSN i bez <options>: SDK inicjalizuje kod aplikacji (Sentry.init), a appender tylko
+         przekazuje do niego wpisy. Jedno miejsce konfiguracji SDK, jak w module 2.
+         Trzy niezależne progi, tu z wartościami domyślnymi SentryAppender, zapisanymi jawnie,
+         żeby ich zmiana była widoczna w review:
+         minimumEventLevel      od tego poziomu log tworzy error event (issue),
+         minimumBreadcrumbLevel od tego poziomu log staje się breadcrumbem w scope,
+         minimumLevel           od tego poziomu log trafia do Sentry Logs, o ile Sentry.init
+                                włączyło logi (options.getLogs().setEnabled(true)). -->
+    <appender name="SENTRY" class="io.sentry.logback.SentryAppender">
+        <minimumEventLevel>ERROR</minimumEventLevel>
+        <minimumBreadcrumbLevel>INFO</minimumBreadcrumbLevel>
+        <minimumLevel>INFO</minimumLevel>
+    </appender>
+
+    <!-- Poziom loggera działa przed appenderami: wpis odrzucony tutaj nie dociera ani do konsoli,
+         ani do Sentry. DEBUG dla kodu modułu tylko po to, żeby w demo było widać wpis, który
+         konsola pokazuje, a Sentry pomija (jest poniżej wszystkich trzech progów). -->
+    <logger name="pl.training.sentry.module05.logback" level="DEBUG"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="SENTRY"/>
+    </root>
+
+</configuration>

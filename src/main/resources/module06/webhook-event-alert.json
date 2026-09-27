@@ -1,0 +1,92 @@
+{
+  "action": "triggered",
+  "installation": {
+    "uuid": "988f2143-d16b-423c-8ba6-f7b82e3d78ed"
+  },
+  "data": {
+    "event": {
+      "event_id": "e9d7f4390b5345fcb82a558ec644c239",
+      "project": 2,
+      "release": "sentry-training@1.0.0",
+      "platform": "java",
+      "datetime": "2026-09-27T09:31:51.129000Z",
+      "tags": [
+        [
+          "bank",
+          "bank-alfa"
+        ],
+        [
+          "component",
+          "payments"
+        ],
+        [
+          "environment",
+          "training"
+        ],
+        [
+          "interface_type",
+          "exception"
+        ],
+        [
+          "level",
+          "error"
+        ],
+        [
+          "mechanism",
+          "chained"
+        ],
+        [
+          "operation",
+          "charge"
+        ],
+        [
+          "release",
+          "sentry-training@1.0.0"
+        ],
+        [
+          "training.module",
+          "module06"
+        ]
+      ],
+      "contexts": {
+        "bank_call": {
+          "merchant": "rowery-kolo",
+          "payment_id": "pay_7HjdLpQwErTyUi3o",
+          "type": "bank_call"
+        },
+        "trace": {
+          "trace_id": "5815a25343db414ba6d2d4e547e4e676",
+          "span_id": "e1e7893b40e3408c"
+        }
+      },
+      "culprit": "pl.training.sentry.module06.BankGateway in failIfUnavailable",
+      "environment": "training",
+      "fingerprint": [
+        "bank-timeout",
+        "bank-alfa"
+      ],
+      "level": "error",
+      "location": "BankGateway.java",
+      "metadata": {
+        "filename": "BankGateway.java",
+        "function": "failIfUnavailable",
+        "in_app_frame_mix": "system-only",
+        "synthetic": false,
+        "type": "BankGateway$BankTimeoutException",
+        "value": "Bank bank-alfa nie odpowiedział w 30 s: autoryzacja płatności pay_7HjdLpQwErTyUi3o sprzedawcy rowery-kolo"
+      },
+      "title": "BankGateway$BankTimeoutException: Bank bank-alfa nie odpowiedział w 30 s: autoryzacja płatności pay_7HjdLpQwErTyUi3o sprzedawcy rowery-kolo",
+      "type": "error",
+      "url": "http://localhost:9000/api/0/projects/sentry/sentry-training/events/e9d7f4390b5345fcb82a558ec644c239/",
+      "web_url": "http://localhost:9000/organizations/sentry/issues/46/events/e9d7f4390b5345fcb82a558ec644c239/",
+      "issue_url": "http://localhost:9000/api/0/organizations/sentry/issues/46/",
+      "issue_id": "46"
+    },
+    "triggered_rule": "[module06] payments: błąd komponentu"
+  },
+  "actor": {
+    "type": "application",
+    "id": "sentry",
+    "name": "Sentry"
+  }
+}

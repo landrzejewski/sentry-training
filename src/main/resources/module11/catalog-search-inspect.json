@@ -1,0 +1,186 @@
+{
+  "query": "issue event project dsn alert monitor create update delete",
+  "results": [
+    {
+      "name": "search_issue_events",
+      "description": "Search and filter events within a specific issue.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_alert_options",
+      "description": "Discover available actions, conditions, or sources for a Sentry Alert (notification workflow).",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "find_alert_rules",
+      "description": "Find Sentry alert rules.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "find_metric_monitors",
+      "description": "Find Sentry Metric Monitors that evaluate errors, performance, logs, metrics or crash rates.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_alert_rule",
+      "description": "Get details for a Sentry alert rule.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_event_stacktrace",
+      "description": "Get a full thread stacktrace from a specific Sentry event.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_issue_breadcrumbs",
+      "description": "Get the breadcrumb trail from a Sentry issue event.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_issue_details",
+      "description": "Get detailed information about a specific Sentry issue by ID.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_metric_monitor_details",
+      "description": "Inspect a Sentry Metric Monitor's query, dataset, detection mode, thresholds, resolution conditions and connected Alerts.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "search_events",
+      "description": "Search Sentry events and replays. Use for event counts/statistics.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "search_issues",
+      "description": "Search for grouped issues/problems in Sentry - returns a LIST of issues, NOT counts or aggregations.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "find_monitors",
+      "description": "Find Sentry cron monitors.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "find_uptime_monitors",
+      "description": "Find Sentry uptime monitors.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_event_attachment",
+      "description": "Download attachments from a Sentry event.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_issue_activity",
+      "description": "Get the activity feed and comments for a Sentry issue.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_issue_tag_values",
+      "description": "Get tag value distribution for a specific Sentry issue.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_issue_user_reports",
+      "description": "Get legacy User Reports or crash-report feedback attached to a Sentry issue.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_monitor_details",
+      "description": "Get details for a Sentry cron monitor.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_uptime_monitor_details",
+      "description": "Get details for a Sentry uptime monitor, including recent checks.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "onboarding_status_update",
+      "description": "Update the progress shown in Sentry's agentic onboarding UI.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    }
+  ]
+}

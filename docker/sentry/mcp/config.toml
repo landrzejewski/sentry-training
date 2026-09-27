@@ -1,0 +1,24 @@
+# Przykładowa konfiguracja Codex dla Sentry MCP (stdio) i lokalnego Sentry z docker/sentry.
+#
+# Plik NIE jest wczytywany automatycznie. Blok [mcp_servers.sentry_local] skopiuj do własnej
+# konfiguracji Codex (~/.codex/config.toml) i zamień ścieżkę w command na absolutną ścieżkę
+# do repozytorium. Tokenu nie wpisuj do tego pliku: Codex przekaże serwerowi zmienną
+# SENTRY_ACCESS_TOKEN ze środowiska, w którym go uruchomisz (env_vars), np. po
+# export SENTRY_ACCESS_TOKEN=$(./docker/sentry/sentry.sh token) w tym samym terminalu.
+#
+# Sprawdzenie: codex mcp list, codex mcp get sentry_local, a w sesji Codex polecenie /mcp.
+# Usunięcie: codex mcp remove sentry_local, a potem odwołanie tokenu w Sentry
+# (http://localhost:9000/settings/account/api/auth-tokens/), bo usunięcie definicji serwera
+# tokenu nie unieważnia.
+
+[mcp_servers.sentry_local]
+command = "/ABSOLUTNA/SCIEZKA/sentry-training/docker/sentry/mcp/sentry-mcp.sh"
+env_vars = ["SENTRY_ACCESS_TOKEN"]
+startup_timeout_sec = 60
+
+# Lista z aktualnego tools/list, oceniona przez ToolPolicy (moduł 11, scenariusz 1).
+# execute_sentry_tool celowo pominięty: enabled_tools nie zawęża operacji docelowych bramy.
+# Dopisz go tylko przy --skills=inspect (tak startuje sentry-mcp.sh) i trybie "prompt",
+# żeby każda operacja katalogu przeszła przez Twoje zatwierdzenie.
+enabled_tools = ["search_events", "search_issues", "get_sentry_resource", "search_sentry_tools"]
+default_tools_approval_mode = "prompt"

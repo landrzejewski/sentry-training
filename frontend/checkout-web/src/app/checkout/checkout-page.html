@@ -1,0 +1,58 @@
+<h1>Podsumowanie zamówienia</h1>
+
+<section>
+  <h2>Koszyk</h2>
+  <ul class="lines">
+    @for (line of lines; track line.name) {
+      <li>
+        <span>{{ line.quantity }} × {{ line.name }}</span>
+        <span>{{ line.quantity * line.price }} zł</span>
+      </li>
+    }
+  </ul>
+  <div class="row">
+    <input id="coupon" placeholder="Kod rabatowy" [value]="couponCode()" (input)="couponCode.set($any($event.target).value)" />
+    <button id="apply-coupon" type="button" (click)="applyCoupon()">Zastosuj kod</button>
+  </div>
+  <p class="total">Razem: <strong id="total">{{ total() }} zł</strong></p>
+</section>
+
+<section>
+  <h2>Dane odbiorcy</h2>
+  <label>Imię i nazwisko <input id="full-name" autocomplete="name" value="Anna Kowalska" /></label>
+  <label>E-mail <input id="email" type="email" autocomplete="email" value="anna.kowalska@example.com" /></label>
+  <label>Telefon <input id="phone" type="tel" autocomplete="tel" value="+48 600 100 200" /></label>
+</section>
+
+<section>
+  <h2>Dostawa</h2>
+  <label class="inline">
+    <input type="radio" name="delivery" [checked]="deliveryMode() === 'PICKUP_POINT'" (change)="chooseDelivery('PICKUP_POINT')" />
+    Punkt odbioru
+  </label>
+  <label class="inline">
+    <input type="radio" name="delivery" [checked]="deliveryMode() === 'COURIER'" (change)="chooseDelivery('COURIER')" />
+    Kurier
+  </label>
+  @if (deliveryMode() === 'PICKUP_POINT') {
+    <select id="pickup-point" [value]="pickupPointId()" (change)="pickupPointId.set($any($event.target).value)">
+      @for (point of pickupPoints; track point.id) {
+        <option [value]="point.id">{{ point.id }}: {{ point.label }}</option>
+      }
+    </select>
+  }
+</section>
+
+<div class="row actions">
+  <button id="place-order" type="button" class="primary" (click)="placeOrder()">Zamawiam i płacę</button>
+  <button id="save-for-later" type="button" (click)="saveForLater()">Zapisz na później</button>
+</div>
+<p id="status" class="status">{{ status() }}</p>
+
+<section class="traps">
+  <h2>Pułapki propagacji (moduł 5)</h2>
+  <div class="row">
+    <button id="order-foreign-host" type="button" (click)="placeOrder('poza-targets')">Zamów przez 127.0.0.1 (poza tracePropagationTargets)</button>
+    <button id="order-legacy-cors" type="button" (click)="placeOrder('legacy-cors')">Zamów przez /legacy-api (CORS bez nagłówków trace)</button>
+  </div>
+</section>

@@ -1,0 +1,196 @@
+{
+  "query": "issue event project dsn alert monitor create update delete",
+  "results": [
+    {
+      "name": "create_alert_rule",
+      "description": "Create a Sentry Alert (workflow) with notification actions and explicit sources.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "create_metric_monitor",
+      "description": "Create a Sentry Metric Monitor with Static, Percent or Dynamic detection in a project.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "delete_alert_rule",
+      "description": "Permanently delete a Sentry Alert (workflow), preserving its connected monitors.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "update_alert_rule",
+      "description": "Update a Sentry Alert (workflow), including notification actions and connections.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "delete_metric_monitor",
+      "description": "Permanently delete a Sentry Metric Monitor, preserving its connected Alerts and their other monitors.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "update_metric_monitor",
+      "description": "Update a Sentry Metric Monitor's query, detection conditions, metadata, status or connected Alerts.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "create_dsn",
+      "description": "Create an additional DSN for an EXISTING project.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "create_project",
+      "description": "Create a new project in Sentry (provisions DSN automatically).",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "create_uptime_monitor",
+      "description": "Create a Sentry HTTP uptime monitor.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "delete_uptime_monitor",
+      "description": "Delete a Sentry HTTP uptime monitor.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "update_dsn",
+      "description": "Update settings for an existing DSN (client key) in a project, such as name, active status, rate limit, and loader script options.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "update_issue",
+      "description": "Update a Sentry issue's status or assignment.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "update_uptime_monitor",
+      "description": "Update a Sentry HTTP uptime monitor.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "search_issue_events",
+      "description": "Search and filter events within a specific issue.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "update_project",
+      "description": "Update project metadata in Sentry, such as name, slug, and platform.",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_alert_options",
+      "description": "Discover available actions, conditions, or sources for a Sentry Alert (notification workflow).",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "find_alert_rules",
+      "description": "Find Sentry alert rules.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "find_metric_monitors",
+      "description": "Find Sentry Metric Monitors that evaluate errors, performance, logs, metrics or crash rates.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_alert_rule",
+      "description": "Get details for a Sentry alert rule.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_event_stacktrace",
+      "description": "Get a full thread stacktrace from a specific Sentry event.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "title": "Checkout: kontrakt operacyjny (moduł 10)",
+  "owner": "training",
+  "projects": ["sentry-training"],
+  "environment": ["training"],
+  "release": ["sentry-training@1.0.0-m10ref"],
+  "period": "24h",
+  "widgets": [
+    {
+      "title": "Failure rate checkoutu",
+      "question": "Jaki odsetek prób checkoutu kończy się porażką domenową w wybranym zakresie?",
+      "decision": "Poniżej 0,02 bez akcji, o ile widget prób ma dane: bez prób równanie pokazuje 0, a nie brak wyniku. Powyżej 0,05 sprawdź przyczyny w widgecie porażek i stan Monitora checkoutu.",
+      "widgetType": "tracemetrics",
+      "displayType": "big_number",
+      "interval": "1h",
+      "aggregates": ["equation|sum(value,checkout.failed,counter,none) / sum(value,checkout.attempted,counter,none)"],
+      "thresholds": {"max1": 0.02, "max2": 0.05, "polarity": "-"},
+      "layout": {"x": 0, "y": 0, "w": 2, "h": 2}
+    },
+    {
+      "title": "Failure rate w czasie",
+      "question": "Kiedy w przypiętym release zmienił się failure rate?",
+      "decision": "Wysoki od pierwszych godzin release: regresja wydania, wstrzymaj rollout. Skok w trakcie życia release: sprawdź bramkę płatności i nierozwiązane issues.",
+      "widgetType": "tracemetrics",
+      "displayType": "line",
+      "interval": "1h",
+      "aggregates": ["equation|sum(value,checkout.failed,counter,none) / sum(value,checkout.attempted,counter,none)"],
+      "layout": {"x": 2, "y": 0, "w": 4, "h": 2}
+    },
+    {
+      "title": "Próby checkoutu według metody płatności",
+      "question": "Ile prób obsługujemy, czyli jaki jest mianownik failure rate?",
+      "decision": "Spadek prób przy stałym failure rate oznacza problem przed checkoutem, a nie w nim.",
+      "widgetType": "tracemetrics",
+      "displayType": "bar",
+      "interval": "1h",
+      "limit": 5,
+      "aggregates": ["sum(value,checkout.attempted,counter,none)"],
+      "columns": ["payment.method"],
+      "orderby": "-sum(value,checkout.attempted,counter,none)",
+      "layout": {"x": 0, "y": 2, "w": 3, "h": 2}
+    },
+    {
+      "title": "Porażki według przyczyny",
+      "question": "Dlaczego płatności nie przechodzą: odrzucenia, timeouty bramki czy błędy w kodzie?",
+      "decision": "declined to decyzja bramki. gateway_timeout i internal_error to incydent: przejdź do Issues i trace.",
+      "widgetType": "tracemetrics",
+      "displayType": "bar",
+      "interval": "1h",
+      "limit": 5,
+      "aggregates": ["sum(value,checkout.failed,counter,none)"],
+      "columns": ["checkout.outcome"],
+      "orderby": "-sum(value,checkout.failed,counter,none)",
+      "layout": {"x": 3, "y": 2, "w": 3, "h": 2}
+    },
+    {
+      "title": "Czas checkoutu p50 i p95",
+      "question": "Ile trwa checkout dla typowego i dla wolnego klienta?",
+      "decision": "p95 rośnie przy stałym p50: problem w ogonie, np. timeouty bramki. Oceniaj razem z liczbą prób, bo p95 z kilku obserwacji niewiele mówi.",
+      "widgetType": "tracemetrics",
+      "displayType": "line",
+      "interval": "1h",
+      "aggregates": [
+        "p50(value,checkout.duration,distribution,millisecond)",
+        "p95(value,checkout.duration,distribution,millisecond)"
+      ],
+      "layout": {"x": 0, "y": 4, "w": 3, "h": 2}
+    },
+    {
+      "title": "Głębokość kolejki potwierdzeń płatności",
+      "question": "Czy konsument kolejki potwierdzeń płatności nadąża z pracą?",
+      "decision": "max rośnie przez kilka bucketów: konsument stoi, eskaluj do właściciela księgowania. Licznik napływu tego nie pokaże.",
+      "widgetType": "tracemetrics",
+      "displayType": "line",
+      "interval": "1h",
+      "aggregates": ["max(value,payments.queue.depth,gauge,none)"],
+      "layout": {"x": 3, "y": 4, "w": 3, "h": 2}
+    },
+    {
+      "title": "Crash-free sessions według release",
+      "question": "Jaki odsetek sesji przypiętego release kończy się bez crasha i na ilu sesjach to policzono?",
+      "decision": "Brak sesji to brak wyniku, a nie 100%. Do porównania z poprzednim release dopisz go do filtra release w definicji i porównuj tylko przy podobnej liczbie sesji.",
+      "widgetType": "metrics",
+      "displayType": "table",
+      "interval": "1h",
+      "limit": 5,
+      "aggregates": ["crash_free_rate(session)", "sum(session)"],
+      "columns": ["release"],
+      "orderby": "-sum(session)",
+      "layout": {"x": 0, "y": 6, "w": 6, "h": 2}
+    },
+    {
+      "title": "Nierozwiązane issues checkoutu",
+      "question": "Które problemy checkoutu są otwarte i czy mają właściciela?",
+      "decision": "Issue bez assignee przypisz w triage. Regresja po wdrożeniu blokuje kolejny release.",
+      "widgetType": "issue",
+      "displayType": "table",
+      "interval": "1h",
+      "limit": 10,
+      "columns": ["issue", "assignee", "title"],
+      "conditions": "is:unresolved training.module:module10",
+      "orderby": "freq",
+      "layout": {"x": 0, "y": 8, "w": 6, "h": 3}
+    }
+  ]
+}

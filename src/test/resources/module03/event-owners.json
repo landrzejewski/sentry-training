@@ -1,0 +1,48 @@
+{
+ "owners": [
+  {
+   "type": "team",
+   "id": "4",
+   "name": "checkout"
+  },
+  {
+   "type": "team",
+   "id": "3",
+   "name": "payments"
+  }
+ ],
+ "rule": [
+  "path",
+  "pl/training/sentry/module03/*"
+ ],
+ "rules": [
+  [
+   [
+    "path",
+    "pl/training/sentry/module03/*"
+   ],
+   [
+    [
+     "team",
+     "checkout"
+    ]
+   ]
+  ],
+  [
+   [
+    "tags.payment.failure_reason",
+    "*"
+   ],
+   [
+    [
+     "team",
+     "payments"
+    ],
+    [
+     "team",
+     "checkout"
+    ]
+   ]
+  ]
+ ]
+}

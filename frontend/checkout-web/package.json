@@ -1,0 +1,38 @@
+{
+  "name": "checkout-web",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "^22.12.0 || >=24.0.0"
+  },
+  "scripts": {
+    "ng": "ng",
+    "prestart": "node scripts/runtime-config.mjs public",
+    "start": "ng serve",
+    "build": "node scripts/build.mjs",
+    "sourcemaps:inject": "node scripts/inject-debug-ids.mjs",
+    "sourcemaps:upload": "node scripts/upload-sourcemaps.mjs",
+    "serve:dist": "node scripts/serve-dist.mjs",
+    "scenarios": "node scripts/scenarios.mjs"
+  },
+  "dependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0",
+    "@angular/platform-browser": "^21.2.0",
+    "@angular/router": "^21.2.0",
+    "@sentry/angular": "11.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.2.24",
+    "@angular/cli": "^21.2.24",
+    "@angular/compiler-cli": "^21.2.0",
+    "@sentry/cli": "3.8.0",
+    "prettier": "^3.8.1",
+    "puppeteer-core": "25.12.0",
+    "typescript": "~5.9.2"
+  }
+}
